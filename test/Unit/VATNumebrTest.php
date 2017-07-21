@@ -2,6 +2,8 @@
 
 namespace KiboIT\VATVerification;
 
+class TestVATNumber extends VATNumber {}
+
 class VATNumebrTest extends \PHPUnit_Framework_TestCase {
 
     public function testBuildFromConstructor() {
@@ -39,6 +41,11 @@ class VATNumebrTest extends \PHPUnit_Framework_TestCase {
         $vat = VATNumber::fromString('NL803851595B01');
         $this->assertEquals('NL803851595B01', $vat->toString());
         $this->assertEquals('NL803851595B01', (string)$vat);
+    }
+
+    public function testStaticFactoryMethods() {
+        $this->assertInstanceOf(TestVATNumber::class, TestVATNumber::fromString('NL123456'));
+        $this->assertInstanceOf(TestVATNumber::class, TestVATNumber::sanitizeAndBuildFromString('NL123234234'));
     }
 
 }
