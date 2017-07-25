@@ -16,7 +16,7 @@ class VATNumber {
 
     /**
      * @param $string
-     * @return VATNumber
+     * @return static
      */
     public static function fromString($string) {
         return new static(substr($string, 0, 2), substr($string, 2));
@@ -24,7 +24,7 @@ class VATNumber {
 
     /**
      * @param $string
-     * @return VATNumber
+     * @return static
      */
     public static function sanitizeAndBuildFromString($string) {
         return static::fromString(preg_replace('/[^0-9A-Za-z]/', '', $string));
